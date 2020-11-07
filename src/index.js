@@ -14,7 +14,6 @@ const debounce = require('lodash.debounce');
 refs.searchForm.addEventListener('input', debounce(onSearch, 500));
 
 function onSearch() {
-    console.log('onSearch')
     const query = refs.searchForm.elements.query.value;
     if (query === '') {
         clearMarkup();
@@ -27,28 +26,28 @@ function onSearch() {
 }
 
 function countriesListRender(countries) {
-    console.log('countriesListRender')
-    if (countries.length > 10) { 
+    console.dir(countries);
+    if (countries.status === 404) {
+        clearMarkup();
+        noResult();
+    }
+
+    if (countries.length > 10) {
         alert({
             text: "Too many matches found. Please enter a more specific quuery!",
             autoOpen: true,
             styling: 'brighttheme',
-            delay: 3000,
+            delay: 1800,
             width: '400px',
             maxTextHeight: null,
             sticker: false,
-        });        
+        });
         return
     } else if (countries.length === 1) {
-       refs.cardContainer.innerHTML = countryCardTmp(countries[0]); 
-    } else if (countries.length > 1){
+        refs.cardContainer.innerHTML = countryCardTmp(countries[0]);
+    } else if (countries.length > 1) {
         refs.cardContainer.innerHTML = countriesListTmp(countries);
-    } else {
-        console.log('countries.length', countries.length);
-        clearMarkup();
-        noResult();
     }
-    
 }
 
 function clearMarkup() {
@@ -59,7 +58,7 @@ function noResult() {
   alert({
     title: 'Uh Oh!',
     text: 'No matches found!',
-    delay: 3000,
+    delay: 1800,
     styling: 'brighttheme',
     type: 'error',
     maxTextHeight: null,

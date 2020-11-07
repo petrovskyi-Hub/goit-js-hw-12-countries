@@ -19,9 +19,13 @@ body {
   background-image: url('./images/bg-pattern.png');
 }
 
+.title {
+  text-align: center;
+}
+
 .search-form {
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   text-align: center;
 }
 
@@ -53,4 +57,10 @@ body {
 .country__name {
   text-align: center;
   font-size: 60px;
+}
+
+.js-card-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
